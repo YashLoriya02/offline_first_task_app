@@ -1,0 +1,5 @@
+- Install dependencies by running npm i in the backend and pub get in the frontend.
+- Add your MongoDB connection string as MONGO_URI in the .env file in the backend directory.
+- Run Docker Desktop in your system.
+- Start the backend in Docker by running docker-compose up --build.
+- Launch the frontend by running flutter run or executing the main.dart file on any available emulator.
