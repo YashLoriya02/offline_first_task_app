@@ -1,0 +1,25 @@
+services:
+  mongo_db:
+    container_name: database_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+
+  backend:
+    container_name: api-server
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      DB_URI: mongodb://mongo_db:27017/mydb
+      CHOKIDAR_USEPOLLING: true
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongo_db
+    command: ["npx", "nodemon"]
+
+volumes:
+  mongo_db: {}
